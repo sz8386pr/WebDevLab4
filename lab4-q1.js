@@ -15,6 +15,9 @@ var rates = {
 
 // TODO add a new property for Swiss Francs. Symbol is CHF, value is 1.1787.
 rates.CHF = 1.1787;
+chfKey = Object.keys(rates)[Object.keys(rates).length-1]
+chfValue = rates.CHF
+console.log(chfKey, chfValue)
 
 // TODO if you had 100 Euros, calculate the equivalent value in Australian Dollars (AUD)
 var euroToAUD = (100 * rates.AUD).toFixed(2);
@@ -78,8 +81,9 @@ cats_and_owners.push({name: "Taylor Swift", cat : "Meredith"})
 
 // TODO write a loop to print each cat owner, and their cat's name, one per line
 for (cat in cats_and_owners) {
-  console.log(cats_and_owners[cat].name + ": " + cats_and_owners[cat].cat)
-
+  owner = cats_and_owners[cat].name;
+  catName = cats_and_owners[cat].cat;
+  console.log(owner + "'s cat is " + catName)
 }
 
 
@@ -216,7 +220,9 @@ var nobel_prize_winners_2017 = {
 // TODO print the full name of the Literature Nobel laureate.
 for (categories in nobel_prize_winners_2017.prizes) {
   if (nobel_prize_winners_2017.prizes[categories].category == "literature") {
-    console.log("\n2017 Literature Nobel laureate is " + nobel_prize_winners_2017.prizes[categories].laureates[0].firstname, nobel_prize_winners_2017.prizes[categories].laureates[0].surname)
+    firstName = nobel_prize_winners_2017.prizes[categories].laureates[0].firstname;
+    surName = nobel_prize_winners_2017.prizes[categories].laureates[0].surname
+    console.log("\n2017 Literature Nobel laureate is " + firstName, surName)
   }
 }
 
@@ -237,18 +243,12 @@ for (categories in nobel_prize_winners_2017.prizes) {
 }
 
 // TODO write code to print the total number of prize categories
-var numCategory = 0;
-for (categories in nobel_prize_winners_2017.prizes) {
-  numCategory++;
-}
-
+numCategory = Object.keys(nobel_prize_winners_2017.prizes).length
 console.log("Total number of prize categories are " + numCategory)
 
 // TODO write code to count the total number of laureates from 2017. (have a good look at how the JSON is structured, and think about what loop(s) you'll need to write.)
 var numLaureates = 0;
 for (categories in nobel_prize_winners_2017.prizes) {
-  for (laureate in nobel_prize_winners_2017.prizes[categories].laureates) {
-    numLaureates++;
-  }
+  numLaureates += Object.keys(nobel_prize_winners_2017.prizes[categories].laureates).length
 }
 console.log("\nThere are " + numLaureates + " Nobel Prize laureates on the list")
